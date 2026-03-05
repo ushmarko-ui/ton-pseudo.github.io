@@ -1,0 +1,106 @@
+body {
+    background-image: url('../IMAGE/Cybersecurity-strategy-services-cloud4c-webpage-1.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+/* Conteneur pour organiser les cartes sur la page */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espace entre le haut et le bas */
+    padding: 50px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* Style commun pour toutes les cases transparentes */
+.glass-card {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Placement spécifique pour la carte profil (centrée en haut) */
+.profile-card {
+    align-self: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Placement spécifique pour la carte À propos (bas gauche) */
+.about-card {
+    align-self: flex-start; /* Aligné à gauche */
+    max-width: 450px; /* Plus petite que la principale */
+    margin-top: 40px;
+}
+
+/* Typographie pour la nouvelle case */
+.about-card h2 {
+    color: #38bdf8;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.about-card p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* === GARDER TON LAYOUT EXISTANT === */
+.main-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #38bdf8;
+    object-fit: cover;
+}
+
+.welcome-text { font-size: 2.5rem; margin: 0; }
+.tagline { color: #38bdf8; margin-bottom: 20px; }
+
+.links { display: flex; gap: 15px; }
+.btn { text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; transition: 0.3s; }
+.btn-primary { background: #38bdf8; color: #0f172a; }
+.btn-secondary { border: 1px solid white; color: white; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-layout { flex-direction: column; text-align: center; }
+    .about-card { align-self: center; text-align: center; }
+}
+
+.btn-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-more:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px #38bdf8;
+    transform: translateX(5px); /* Petit décalage vers la droite */
+}
