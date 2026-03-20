@@ -44,8 +44,7 @@
     text-align: center;
     margin-top: 40px;
     opacity: 0;
-    animation: fadeIn 1s forwards 2.5s; /* Commence après l'animation de barre */
-}
+    animation: fadeIn 1s forwards 1.5s; /* Commence après l'animation de barre */}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -146,3 +145,4 @@
     border-radius: 8px;
     font-style: italic;
 }
+
