@@ -10,17 +10,18 @@ body {
     color: white;
 }
 
-/* Conteneur pour organiser les cartes sur la page */
+/* --- LE CONTENEUR QUI CENTRE TOUT --- */
 .page-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Espace entre le haut et le bas */
+    align-items: center; /* CENTRE TOUT HORIZONTALEMENT */
     padding: 50px;
     box-sizing: border-box;
     min-height: 100vh;
+    gap: 30px; /* Espace régulier entre ton profil, tes projets et tes cartes */
 }
 
-/* Style commun pour toutes les cases transparentes */
+/* Style commun "Glassmorphism" */
 .glass-card {
     background: rgba(15, 23, 42, 0.4);
     backdrop-filter: blur(15px);
@@ -29,89 +30,92 @@ body {
     border-radius: 25px;
     padding: 30px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    width: 100%; /* Pour que max-width fonctionne bien */
+    box-sizing: border-box;
 }
 
-/* Placement spécifique pour la carte profil (centrée en haut) */
+/* Carte profil (Haut) */
 .profile-card {
-    align-self: center;
     max-width: 900px;
-    width: 100%;
 }
 
-/* Placement spécifique pour la carte À propos (bas gauche) */
-.about-card {
-    align-self: flex-start; /* Aligné à gauche */
-    max-width: 450px; /* Plus petite que la principale */
-    margin-top: 40px;
+/* === SECTION PROJETS ACADÉMIQUES (MILIEU) === */
+.projects-container {
+    max-width: 900px; /* Même largeur que le profil pour être bien aligné */
 }
 
-/* Typographie pour la nouvelle case */
-.about-card h2 {
+.projects-container h2 {
     color: #38bdf8;
     margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
 }
 
-.about-card p {
-    line-height: 1.6;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.9);
+.projects-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* === GARDER TON LAYOUT EXISTANT === */
-.main-layout {
+.projects-list li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+}
+
+.projects-list li:last-child { border-bottom: none; }
+
+.projects-list li:hover {
+    background: rgba(56, 189, 248, 0.1);
+    border-radius: 10px;
+}
+
+.projects-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    display: block;
+}
+
+/* === LES DEUX CARTES DU BAS (CÔTE À CÔTE) === */
+.cards-container {
     display: flex;
-    align-items: center;
-    gap: 40px;
+    flex-direction: row;
+    gap: 25px;
+    width: 100%;
+    max-width: 900px;
 }
+
+.about-card {
+    flex: 1; /* Les deux cartes prennent la même place */
+}
+
+.about-card h2 { color: #38bdf8; margin-top: 0; }
+
+/* === ÉLÉMENTS INTERNES === */
+.main-layout { display: flex; align-items: center; gap: 40px; }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid #38bdf8;
+    width: 180px; height: 180px;
+    border-radius: 50%; border: 3px solid #38bdf8;
     object-fit: cover;
 }
 
 .welcome-text { font-size: 2.5rem; margin: 0; }
 .tagline { color: #38bdf8; margin-bottom: 20px; }
 
-.links { display: flex; gap: 15px; }
-.btn { text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; transition: 0.3s; }
+.btn { text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; transition: 0.3s; display: inline-block; }
 .btn-primary { background: #38bdf8; color: #0f172a; }
-.btn-secondary { border: 1px solid white; color: white; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .main-layout { flex-direction: column; text-align: center; }
-    .about-card { align-self: center; text-align: center; }
-}
 
 .btn-more {
-    display: inline-block;
-    margin-top: 15px;
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+    display: inline-block; margin-top: 15px; color: #38bdf8;
+    text-decoration: none; font-weight: 700; text-transform: uppercase;
+    transition: 0.3s;
 }
 
-.btn-more:hover {
-    color: #ffffff;
-    text-shadow: 0 0 10px #38bdf8;
-    transform: translateX(5px); /* Petit décalage vers la droite */
-}
+.btn-more:hover { transform: translateX(5px); color: white; }
 
-/* === ANIMATION D'ENTRÉE POUR LA PAGE PRINCIPALE === */
-
-.main-page {
-    animation: fadeInPage 1s ease-out; /* Effet de fondu doux au chargement */
-}
-
-@keyframes fadeInPage {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Responsive */
+@media (max-width: 850px) {
+    .main-layout, .cards-container { flex-direction: column; text-align: center; }
+    .about-card { width: 100%; }
 }
