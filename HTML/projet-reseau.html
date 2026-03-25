@@ -14,62 +14,116 @@
 
         <header class="glass-card header-section">
             <h1>Projet FUNKYTOWN</h1>
-            <p class="subtitle">Interconnexion sécurisée multi-sites et déploiement IPv6</p>
-            <img src="../IMAGE/reseau-topologie.png" alt="Topologie globale Packet Tracer" class="img-full">
+            <p class="subtitle">Simulation d'Infrastructure Multi-sites sous Cisco Packet Tracer</p>
+            
+            <div class="intro-dev">
+                <p><strong>Note technique :</strong> Ce projet a été entièrement réalisé sur <strong>Cisco Packet Tracer</strong>. Nous avons configuré l'intégralité des équipements actifs (Routeurs, Switchs) et les services réseau pour interconnecter quatre sites distants en IPv6.</p>
+                 <ul class="intro-list">
+            <li><strong>Équipements :</strong> Configuration individuelle de chaque <strong>Routeur</strong> (routage IPv6, interfaces de bordure) et de chaque <strong>Switch</strong> (VLANs, cascade de commutateurs).</li>
+            <li><strong>Adressage Dynamique :</strong> Programmation des pools <strong>DHCP IPv6</strong> pour permettre l'auto-configuration immédiate des adresses IP sur l'ensemble des PC du réseau.</li>
+            <li><strong>Connectivité Sans-fil :</strong> Déploiement et sécurisation du <strong>Wi-Fi</strong> sur chaque site via des bornes d'accès (Access Points) pour les équipements nomades.</li>
+        </ul>
+                <img src="/IMAGE/site funkytown.png" alt="Funkytown" class="img-full img-border">
+            </div>
         </header>
 
         <section class="glass-card">
-            <h2>I. Contexte du Projet</h2>
-            <div class="intro-box">
-                <p>Simulation de l'interconnexion de quatre sites géographiques (Aya, Jules, Erwan et eXia) au sein d'une infrastructure d'entreprise distribuée via un cœur de réseau FAI.</p>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-item"><strong>Routage :</strong> IPv6 Unicast-Routing</div>
-                <div class="stat-item"><strong>Services :</strong> DNS, FTP, HTTP</div>
-                <div class="stat-item"><strong>Sécurité :</strong> Contrôle d'accès RBAC</div>
-                <div class="stat-item"><strong>Outil :</strong> Cisco Packet Tracer</div>
-            </div>
-        </section>
-
-        <section class="glass-card">
-            <h2>II. Focus : Architecture du Site Engie</h2>
-            <div class="split-content">
-                <div class="text-side">
-                    <p>Conception d'un LAN haute densité pour le site Engie comprenant :</p>
-                    <ul>
-                        <li><strong>Structure :</strong> Topologie en étoile avec cascade de switchs.</li>
-                        <li><strong>Mobilité :</strong> Bornes Wi-Fi (Access Points) pour terminaux mobiles.</li>
-                        <li><strong>Services :</strong> Serveur local dédié (ENGIE_SERVER).</li>
-                        <li><strong>Segmentation :</strong> Isolation du trafic filaire et nomade.</li>
-                    </ul>
-                </div>
-                <div class="image-side">
-                    <img src="../IMAGE/reseau-engie.png" alt="Zoom site Engie" class="img-responsive">
-                </div>
-            </div>
-        </section>
-
-        <section class="glass-card">
-            <h2>III. Configuration et Tests de Connectivité</h2>
-            <p>Mise en place du routage moderne pour assurer la communication entre les sites distants et les ressources partagées.</p>
+            <h2>I. Analyse du Besoin et Planification</h2>
             
-            <div class="code-container">
-                <h3>Aperçu Configuration (CLI Cisco)</h3>
-                <pre class="code-block">
-<code>! Activation du routage IPv6
-ipv6 unicast-routing
+            <h3>Bête à cornes</h3>
+            <p>Identification de la valeur ajoutée : permettre aux collaborateurs de communiquer via une infrastructure IPv6 sécurisée.</p>
+            <img src="/IMAGE/bete a corne .png" alt="Bête à cornes" class="img-full img-border">
 
-! Configuration de l'interface vers le LAN
-interface GigabitEthernet0/0
- ipv6 address 2001:DB8:ACAD:1::1/64
- ipv6 enable
- no shutdown</code></pre>
-            </div>
-
-            <div class="alert-box">
-                <p><strong>Résultat :</strong> Validation complète par tests de "Pings" inter-sites réussis, garantissant l'accès aux serveurs DNS et FTP globaux.</p>
+            <div class="margin-top">
+                <h3>Diagramme GANTT</h3>
+                <p>Ordonnancement des tâches sur 4 semaines pour garantir la livraison du projet.</p>
+                <img src="/IMAGE/Gantt.png" alt="Diagramme GANTT" class="img-full img-border">
             </div>
         </section>
+
+        <section class="glass-card">
+            <h2>II. Plan d'Adressage IPv6 & Services</h2>
+            <p>Conception d'un plan d'adressage hiérarchique pour une segmentation nette sans NAT.</p>
+            <img src="/IMAGE/plan Dadressage.png" alt="Plan d'adressage Excel" class="img-full img-border">
+            
+            <div class="explanation-box">
+                <h3>Configurations Techniques :</h3>
+                <ul>
+                    <li><strong>IPv6 Unicast :</strong> Activation du routage global sur les équipements Cisco.</li>
+                    <li><strong>DHCP IPv6 :</strong> Configuration de l'attribution automatique des adresses pour simplifier l'administration et éviter les conflits d'IP sur les hôtes.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="glass-card">
+            <h2>III. Architecture Détaillée par Site</h2>
+
+            <div class="site-block">
+                <h3>1. Site ENGIE (Hotline & Conception)</h3>
+                <p>Le site Engie représente le pôle le plus dense de l'infrastructure (Hotline & Conception), nécessitant une gestion avancée de la connectivité filaire et mobile.
+
+Équipements : Déploiement d'une cascade de commutateurs (Switchs) Cisco pour supporter plus de 25 postes de travail fixes et un serveur local (ENGIE_SERVER).
+
+Services Mobiles (Wi-Fi) : Installation de bornes d'accès (Access Points) permettant la connexion sans fil des terminaux nomades, avec une isolation du trafic pour garantir la performance du réseau filaire.
+
+Adressage DHCP IPv6 : Configuration d'un pool DHCP IPv6 pour l'attribution automatique des adresses. Cela assure une connectivité instantanée aux collaborateurs et simplifie la gestion des équipements mobiles et fixes.
+
+Interconnexion : Le routeur de bordure assure le lien avec le FAI, permettant l'accès sécurisé aux ressources globales de l'entreprise (eXia).</p>
+                <img src="/IMAGE/Engie.png" alt="Site Engie" class="img-full">
+                <div class="tech-tag"><strong>Wi-Fi :</strong> Bornes AP configurées pour les Laptops et Smartphones.</div>
+            </div>
+
+            <hr class="separator">
+
+            <div class="site-block">
+                <h3>2. Site BIBLIOTHÈQUE (Accès Public)</h3>
+                <p>Ce site a été configuré pour assurer l'accès réseau des postes publics et administratifs via Cisco Packet Tracer.
+Équipements : Utilisation de commutateurs (Switchs) pour la distribution locale et d'un routeur de bordure pour l'interconnexion.
+Routage IPv6 : Activation du ipv6 unicast-routing pour une communication directe et moderne avec le cœur de réseau (FAI).
+Service DHCP IPv6 : Mise en place de l'attribution automatique des adresses IP. Cela permet aux ordinateurs de se connecter instantanément sans configuration manuelle, évitant ainsi les erreurs et les conflits d'IP.
+Connectivité : Paramétrage de routes statiques pour garantir l'accès aux serveurs centraux (DNS/FTP) du site eXia.</p>
+                <img src="/IMAGE/Bibli.png" alt="Site Bibliothèque" class="img-full">
+                <img src="/IMAGE/routeur et switch bibli.png" alt="Site Bibliothèque" class="img-full">
+            </div>
+
+            <hr class="separator">
+
+            <div class="site-block">
+                <h3>3. Site DATACENTER / DIGIPLEX (Stockage)</h3>
+                <p>Le site Digiplex constitue le cœur névralgique de l’infrastructure, hébergeant le Datacenter et les services de stockage critiques de l'entreprise.
+Équipements : Architecture multi-étages en étoile étendue. Utilisation de commutateurs haute performance pour relier le centre de données (rez-de-chaussée) aux pôles administratifs et de production.
+Services de Données : Configuration des serveurs de stockage et de gestion (AD, Exchange) avec des liens redondants pour assurer une haute disponibilité des ressources.
+Connectivité Wi-Fi : Déploiement de bornes d'accès (Access Points) spécifiquement pour les étages de la Direction et de l'Administration, permettant une mobilité totale des cadres.
+Adressage DHCP IPv6 : Mise en place d'un pool DHCP IPv6 dédié pour automatiser la configuration réseau de tous les équipements et serveurs, garantissant une communication fluide avec les autres sites via le FAI.</p>
+                <img src="/IMAGE/digiplex.png" alt="Digiplex" class="img-full">
+                <img src="/IMAGE/datacenter.png" alt="Datacenter" class="img-full">
+                <div class="tech-tag"><strong>Wi-Fi :</strong> Réseau sans-fil déployé pour les étages administratifs.</div>
+            </div>
+
+            <hr class="separator">
+
+            <div class="site-block">
+                <h3>4. Site EXIA (Services Centraux)</h3>
+                <p>Le site eXia héberge les Services Centraux de l'infrastructure. C'est le point de ressources commun pour tous les autres sites distants du projet Funkytown.
+Équipements : Architecture simplifiée centrée sur un routeur de bordure et un commutateur (Switch) haute performance pour desservir la ferme de serveurs.
+Services Critiques : Configuration et déploiement des serveurs DNS (résolution de noms), FTP (transfert de fichiers) et HTTP (hébergement web).
+Routage IPv6 : Mise en place de routes statiques et activation du ipv6 unicast-routing pour permettre aux sites Engie, Bibliothèque et Digiplex d'accéder aux services via le cœur de réseau (FAI).
+Adressage DHCP IPv6 : Utilisation du DHCP IPv6 pour l'auto-configuration des serveurs et des postes de gestion, garantissant une accessibilité permanente et une maintenance simplifiée des services applicatifs.</p>
+                <img src="/IMAGE/eXia.png" alt="Site eXia" class="img-full">
+            </div>
+        </section>
+
+
+<section class="glass-card conclusion-section">
+    <h2>06. Bilan et Conclusion</h2>
+    <div class="conclusion-content">
+        <p>Le projet <strong>Funkytown</strong> a permis de valider l'interconnexion complète d'une infrastructure moderne sous <strong>IPv6</strong>. La simulation sur Packet Tracer a démontré la viabilité du plan d'adressage et l'efficacité des services automatisés (DHCP, DNS).</p>
+        <p>Cette expérience confirme l'importance d'une planification rigoureuse (GANTT) couplée à une maîtrise des protocoles de routage pour assurer la haute disponibilité d'un réseau d'entreprise multi-sites.</p>
+    </div>
+    <div class="alert-box success">
+        <strong>Statut du Projet :</strong> Validé à 100% - Connectivité Totale.
+    </div>
+</section>
     </div>
 
 </body>
