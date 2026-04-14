@@ -1,50 +1,58 @@
+/* --- RESET ET FOND ANIMÉ --- */
 body {
-    background-image: url('../IMAGE/Cybersecurity-strategy-services-cloud4c-webpage-1.webp');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     margin: 0;
+    padding: 0;
+    background-color: #000; /* Fond noir obligatoire pour Matrix */
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
     color: white;
+    overflow-x: hidden;
+}
+
+/* Le Canvas Matrix qui prend tout l'écran en arrière-plan */
+#matrixCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Derrière tout le contenu */
 }
 
 /* --- LE CONTENEUR QUI CENTRE TOUT --- */
 .page-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center; /* CENTRE TOUT HORIZONTALEMENT */
+    align-items: center; 
     padding: 50px;
     box-sizing: border-box;
     min-height: 100vh;
-    gap: 30px; /* Espace régulier entre ton profil, tes projets et tes cartes */
+    gap: 30px;
+    position: relative;
+    z-index: 1; /* Devant le canvas */
+    background: transparent;
 }
 
-/* Style commun "Glassmorphism" */
+/* Style commun "Glassmorphism" (Cartes translucides) */
 .glass-card {
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(15, 23, 42, 0.6); /* Un peu plus sombre pour mieux voir le vert */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 25px;
     padding: 30px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    width: 100%; /* Pour que max-width fonctionne bien */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    width: 100%;
     box-sizing: border-box;
 }
 
-/* Carte profil (Haut) */
-.profile-card {
+/* --- SECTIONS --- */
+.profile-card, .projects-container, .cards-container {
     max-width: 900px;
+    width: 100%;
 }
 
-/* === SECTION PROJETS ACADÉMIQUES (MILIEU) === */
-.projects-container {
-    max-width: 900px; /* Même largeur que le profil pour être bien aligné */
-}
-
-.projects-container h2 {
+.projects-container h2, .about-card h2 {
     color: #38bdf8;
     margin-top: 0;
     font-size: 1.8rem;
@@ -76,46 +84,74 @@ body {
     display: block;
 }
 
-/* === LES DEUX CARTES DU BAS (CÔTE À CÔTE) === */
+/* --- DISPOSITION CARTES DU BAS --- */
 .cards-container {
     display: flex;
     flex-direction: row;
     gap: 25px;
-    width: 100%;
-    max-width: 900px;
 }
 
 .about-card {
-    flex: 1; /* Les deux cartes prennent la même place */
+    flex: 1;
 }
 
-.about-card h2 { color: #38bdf8; margin-top: 0; }
-
-/* === ÉLÉMENTS INTERNES === */
-.main-layout { display: flex; align-items: center; gap: 40px; }
+/* --- ÉLÉMENTS INTERNES --- */
+.main-layout { 
+    display: flex; 
+    align-items: center; 
+    gap: 40px; 
+}
 
 .profile-img {
-    width: 180px; height: 180px;
-    border-radius: 50%; border: 3px solid #38bdf8;
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%; 
+    border: 3px solid #38bdf8;
     object-fit: cover;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 .welcome-text { font-size: 2.5rem; margin: 0; }
 .tagline { color: #38bdf8; margin-bottom: 20px; }
 
-.btn { text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600; transition: 0.3s; display: inline-block; }
-.btn-primary { background: #38bdf8; color: #0f172a; }
+/* BOUTONS */
+.btn { 
+    text-decoration: none; 
+    padding: 12px 24px; 
+    border-radius: 10px; 
+    font-weight: 600; 
+    transition: 0.3s; 
+    display: inline-block; 
+}
+
+.btn-primary { 
+    background: #38bdf8; 
+    color: #0f172a; 
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 15px #38bdf8;
+    transform: scale(1.05);
+}
 
 .btn-more {
-    display: inline-block; margin-top: 15px; color: #38bdf8;
-    text-decoration: none; font-weight: 700; text-transform: uppercase;
+    display: inline-block; 
+    margin-top: 15px; 
+    color: #38bdf8;
+    text-decoration: none; 
+    font-weight: 700; 
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
 .btn-more:hover { transform: translateX(5px); color: white; }
 
-/* Responsive */
+/* --- RESPONSIVE --- */
 @media (max-width: 850px) {
-    .main-layout, .cards-container { flex-direction: column; text-align: center; }
-    .about-card { width: 100%; }
+    .main-layout, .cards-container { 
+        flex-direction: column; 
+        text-align: center; 
+    }
+    .page-wrapper { padding: 20px; }
+    .welcome-text { font-size: 1.8rem; }
 }
